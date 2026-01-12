@@ -9,157 +9,164 @@ class HomeBody extends StatelessWidget {
     return Stack(
       children: [
         // Background Pattern (Same as splash but maybe lighter or different circles)
-        Positioned.fill(child: CustomPaint(painter: HomeBackgroundPainter())),
-        SafeArea(
-          child: Column(
-            children: [
-              // Header
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+        // Positioned.fill(child: CustomPaint(painter: HomeBackgroundPainter())),
+        SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              children: [
+                // Header
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'THE ENGAGEMENT',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(
+                            color: const Color(0xFFCBB07B),
+                            fontSize: 14,
+                            letterSpacing: 2,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      const CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.favorite,
+                          color: Color(0xFFCBB07B),
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(Icons.more_horiz, color: Colors.black54),
-                    Text(
-                      'THE ENGAGEMENT',
-                      style: GoogleFonts.montserrat(
-                        color: const Color(0xFFCBB07B),
-                        fontSize: 14,
-                        letterSpacing: 2,
-                        fontWeight: FontWeight.w500,
+                const SizedBox(height: 30),
+                // Profile Image with circular frame
+                Center(
+                  child: Container(
+                    width: 260,
+                    height: 260,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: const Color(0xFFCBB07B).withOpacity(0.2),
+                        width: 1,
                       ),
                     ),
-                    const CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.white,
+                    padding: const EdgeInsets.all(8),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: const Color(0xFFCBB07B).withOpacity(0.4),
+                          width: 1,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(4),
+                      child: const CircleAvatar(
+                        radius: 120,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: AssetImage('assets/persons.png'),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                // Poetry/Quote
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    'أخفيتك دهراً وأنتِ سِرٌّ مُعلنٌ\nفي ملامحي، والآن نطقتُ\nبحبكِ يا خيرةَ الله واختياري',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.arefRuqaa(
+                      fontSize: 28,
+                      height: 1.5,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                // Star Separator
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 0.5,
+                      color: const Color(0xFFCBB07B).withOpacity(0.4),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Icon(
-                        Icons.favorite,
+                        Icons.star,
                         color: Color(0xFFCBB07B),
                         size: 20,
                       ),
                     ),
+                    Container(
+                      width: 60,
+                      height: 0.5,
+                      color: const Color(0xFFCBB07B).withOpacity(0.4),
+                    ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 30),
-              // Profile Image with circular frame
-              Center(
-                child: Container(
-                  width: 260,
-                  height: 260,
+                const SizedBox(height: 30),
+                // Names Button-like container
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 12,
+                  ),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: const Color(0xFFCBB07B).withOpacity(0.2),
-                      width: 1,
-                    ),
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: const Color(0xFFCBB07B).withOpacity(0.4),
-                        width: 1,
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
-                    ),
-                    padding: const EdgeInsets.all(4),
-                    child: const CircleAvatar(
-                      radius: 120,
-                      backgroundColor: Colors.transparent,
-                      backgroundImage: AssetImage('assets/persons.png'),
-                    ),
+                    ],
                   ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              // Poetry/Quote
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  'أخفيتُ دهراً وأنتِ سِرٌّ مُعلنٌ\nفي ملامحي، والآن نطقتُ\nبحبِكِ يا خيرةَ الله واختياري',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.arefRuqaa(
-                    fontSize: 28,
-                    height: 1.5,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              // Star Separator
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 0.5,
-                    color: const Color(0xFFCBB07B).withOpacity(0.4),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Icon(Icons.star, color: Color(0xFFCBB07B), size: 20),
-                  ),
-                  Container(
-                    width: 60,
-                    height: 0.5,
-                    color: const Color(0xFFCBB07B).withOpacity(0.4),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 30),
-              // Names Button-like container
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.02),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'محمد',
-                      style: GoogleFonts.arefRuqaa(
-                        fontSize: 20,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'محمد',
+                        style: GoogleFonts.arefRuqaa(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Icon(
-                        Icons.favorite,
-                        color: Color(0xFFCBB07B),
-                        size: 18,
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Icon(
+                          Icons.favorite,
+                          color: Color(0xFFCBB07B),
+                          size: 18,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'هدى',
-                      style: GoogleFonts.arefRuqaa(
-                        fontSize: 20,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        'هدى',
+                        style: GoogleFonts.arefRuqaa(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
